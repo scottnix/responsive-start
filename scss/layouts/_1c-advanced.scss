@@ -1,0 +1,154 @@
+// susy grids v1.0.8
+$max-width: 1140px; // site maximum width
+$total-columns: 12; // column grids
+$column-width: 4em; // column width
+$gutter-width: 2em; // gutters between columns
+$grid-padding: 1em; // grid outer padding
+$show-grid-backgrounds: true; // show highlighted grid columns? true/false
+
+// this is a more complex example, the content is full width with the sidebar appearing below the content.
+// what makes this more complex is the #wrapper, #header and #footer are able to span 100% width of the full browser.
+// this is ugly, but this serves as a rough example of how to keep the main outer divs full width.
+// this could also be even easier by just injecting some divs, like inner wrappers, which I would probably do if I needed this style layout.
+
+#header { 
+    background: $background-secondary;
+}
+#branding,
+#access,
+#main,
+#subsidiary {
+    @include container; // set susy grid container 
+    max-width: $max-width;
+    margin: 0 auto !important;
+}
+#branding {    
+    padding-left: $grid-padding !important;
+    padding-right: $grid-padding !important;
+}
+.hentry {
+    margin-bottom: $spacing*3;
+
+}
+.entry-content {
+
+    @include breakpoint(large) {
+        @include span-columns(8, 12);   
+    }
+}
+.entry-utility {
+
+    @include breakpoint(large) {
+        @include span-columns(3 omega, 12);
+    }
+}
+#primary {
+
+    @include breakpoint(medium) {
+        @include span-columns(6, 12);   
+    }
+}
+#secondary {
+
+    @include breakpoint(medium) {
+        @include span-columns(6 omega, 12);   
+    }
+}
+#footer {
+    background: $background-secondary;
+}
+#first {
+
+    @include breakpoint(medium) {
+        @include span-columns(6, 12);   
+    }
+    @include breakpoint(large) {
+        @include span-columns(3, 12);   
+    }  
+}
+#second {
+
+    @include breakpoint(medium) {
+        @include span-columns(6 omega, 12);   
+    }
+    @include breakpoint(large) {
+        @include span-columns(3, 12);   
+    }  
+}
+#third {
+
+    @include breakpoint(medium) {
+        @include span-columns(6, 12);   
+    }
+    @include breakpoint(large) {
+        @include span-columns(3, 12);   
+    }  
+}
+#footer-widget {
+
+    @include breakpoint(medium) {
+        @include span-columns(6 omega, 12);   
+    }
+    @include breakpoint(large) {
+        @include span-columns(3 omega, 12);   
+    }  
+}
+#siteinfo {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding-left: $grid-padding !important;
+    padding-right: $grid-padding !important;
+    clear: both;
+}
+
+
+// grouping common layout properties
+#header,
+#main,
+#footer {
+    margin-bottom: $spacing*2;
+}
+#siteinfo {
+     
+}
+
+// grouping layout specific clearfixing
+#header, 
+#main,
+.hentry {
+    @extend %clearfix;
+}
+
+
+// page templates
+// ==========================================================================
+
+// page templates overrides
+.page {
+    .entry-content {
+
+        @include breakpoint(large) {
+            @include span-columns(12 omega, 12);
+        }  
+    }
+}
+.page-template-template-page-fullwidth-php {
+    #container {
+
+        @include breakpoint(large) {
+            @include span-columns(12 omega, 12);
+        }
+    }
+}
+
+// attachments overrides
+.single-attachment {
+    #container {
+        @include span-columns(12 omega, 12);
+    }
+    #primary,
+    #secondary,
+    #respond {
+        display: none;
+    }
+}
