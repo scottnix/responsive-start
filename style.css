@@ -8,10 +8,6 @@ Template: thematic
 Version: 0.0.1
 Tags: thematic, child-theme, responsive, mobile-first
 */
-div {
-  background: rgba(0, 0, 0, 0.05) !important;
-}
-
 /* ==========================================================================
    normalize.css v2.1.0 - git.io/normalize
    ========================================================================== */

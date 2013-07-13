@@ -30,7 +30,7 @@ $show-grid-backgrounds: false; // show highlighted grid columns? true/false
     }
 }
 #first {
-
+    
     @include breakpoint(large) {
         @include span-columns(4, 12);
     }
