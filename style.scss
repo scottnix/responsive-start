@@ -1,7 +1,7 @@
 /*!
-Theme Name: Responsive Start Child Theme for Thematic
+Theme Name: Responsive Start
 Theme URI: http://scottnix.com/
-Description: A advanced starter child theme for the Thematic Theme Framework, built loosely on the Responsive Base child theme.
+Description: Advanced responsive child theme for the Thematic Theme Framework, built loosely on the Responsive Base child theme.
 Author: Scott Nix
 Author URI: http://scottnix.com/
 Template: thematic
@@ -21,7 +21,6 @@ Tags: thematic, child-theme, responsive, mobile-first
 
 @import 'scss/normalize';
 
-// better box model - paulirish.com/2012/box-sizing-border-box-ftw/
 *,
 *:before,
 *:after { 
