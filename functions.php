@@ -75,6 +75,17 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 
 
 
+// register two additional custom menu slots
+function childtheme_register_menus() {
+    if ( function_exists( 'register_nav_menu' )) {
+        register_nav_menu( 'secondary-menu', 'Secondary Menu' );
+        register_nav_menu( 'tertiary-menu', 'Tertiary Menu' );
+    }
+}
+add_action('thematic_child_init', 'childtheme_register_menus');
+
+
+
 // remove built in drop down theme javascript
 // thematictheme.com/forums/topic/correct-way-to-prevent-loading-thematic-scripts/
 function childtheme_remove_superfish(){
@@ -135,6 +146,15 @@ add_action('wp_head', 'childtheme_add_favicon');
 
 
 
+// remove user agent sniffing from thematic theme
+// this is what applies classes to the browser type and version body classes
+function childtheme_show_bc_browser() {
+    return FALSE;
+}
+add_filter('thematic_show_bc_browser', 'childtheme_show_bc_browser');
+
+
+
 // kill access and add some new code to be used with the jQuery drop down menu
 function childtheme_override_access() { ?>
     <div id="access">
@@ -151,17 +171,6 @@ function childtheme_override_access() { ?>
     </div><!-- #access -->
     <?php
 }
-
-
-
-// register two additional custom menu slots
-function childtheme_register_menus() {
-    if ( function_exists( 'register_nav_menu' )) {
-        register_nav_menu( 'secondary-menu', 'Secondary Menu' );
-        register_nav_menu( 'tertiary-menu', 'Tertiary Menu' );
-    }
-}
-add_action('thematic_child_init', 'childtheme_register_menus');
 
 
 
@@ -305,10 +314,10 @@ function childtheme_override_postfooter_posttags() {
 // override the nav below, it is now removed on single posts, mainly to better control internal linking (SEO)
 function childtheme_override_nav_below() {
     if ( ! is_single() ) { ?>
-        <div id="nav-below" class="navigation"> <?php 
+        <div id="nav-below" class="navigation"> <?php
             if ( function_exists( 'wp_pagenavi' ) ) {
                 wp_pagenavi();
-             } else { ?>  
+             } else { ?>
             <div class="nav-previous"><?php next_posts_link(sprintf('<span class="meta-nav">&laquo;</span> %s', __('Older posts', 'thematic') ) ) ?></div>
             <div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'thematic') ) ) ?></div>
             <?php } ?>
@@ -390,7 +399,7 @@ function childtheme_override_siteinfo() {
 
 
 /*
-// load google analytics, optimized version 
+// load google analytics, optimized version
 // http://mathiasbynens.be/notes/async-analytics-snippet
 function childtheme_google_analytics(){ ?>
 <script>var _gaq=[['_setAccount','UA-xxxxxxx-x'],['_trackPageview']];(function(d){var g=d.createElement('script'),s=d.scripts[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document))</script>
