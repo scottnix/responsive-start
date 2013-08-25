@@ -1,0 +1,52 @@
+.page-link,
+.comment-navigation {
+    margin: 0 0 $spacing;
+    clear: both;
+    font-weight: bold;
+    a {
+        padding: 0.4em 0.65em;
+        background: $background-secondary;
+    }
+    a,
+    span {
+        margin-right: 0.5em;
+    }
+}
+.paginated-comments-links {
+    margin-top: $spacing;
+}
+.button,
+button,
+input[type="submit"] {
+    position: relative;
+    display: inline-block;
+    padding: $spacing/2;
+    border: none;
+    background: $background-secondary;
+    color: $accent-color;
+    cursor: pointer;
+    text-align: center;
+}
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+    background: lighten($background-secondary, 5%);
+}
+#nav-below {
+    margin: 0 0 $spacing;
+    overflow: hidden;
+    clear: both;
+    .meta-nav {}
+
+    @include breakpoint(medium) {
+        .nav-previous {
+            float: left;
+        }
+        .nav-next {
+            float: right;
+            text-align: right;
+        }
+    }
+}
+.more-link {}
+.edit-link {}
