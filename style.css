@@ -117,11 +117,9 @@ img {
 }
 
 p,
-form,
 address,
 figure,
 embed,
-select,
 .video-container {
   margin: 0 0 1.625em;
 }
@@ -801,6 +799,11 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
+form,
+select {
+  margin-bottom: 1.625em;
+}
+
 .button,
 button,
 input[type="submit"] {
@@ -818,21 +821,6 @@ input[type="submit"] {
 button:hover,
 input[type="submit"]:hover {
   background: #2b3c4e;
-}
-
-#nav-below {
-  margin: 0 0 1.625em;
-  overflow: hidden;
-  clear: both;
-}
-@media (min-width: 30em) {
-  #nav-below .nav-previous {
-    float: left;
-  }
-  #nav-below .nav-next {
-    float: right;
-    text-align: right;
-  }
 }
 
 input,
@@ -853,6 +841,21 @@ textarea {
   resize: vertical;
   overflow: auto;
   vertical-align: top;
+}
+
+#nav-below {
+  margin: 0 0 1.625em;
+  overflow: hidden;
+  clear: both;
+}
+@media (min-width: 30em) {
+  #nav-below .nav-previous {
+    float: left;
+  }
+  #nav-below .nav-next {
+    float: right;
+    text-align: right;
+  }
 }
 
 .page-link,
