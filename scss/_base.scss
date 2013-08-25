@@ -17,13 +17,13 @@ $header-link: #1ccdaa;
 $body-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $body-color: #ecf0f1;
 $body-link: #1ccdaa;
-$body-hover: lighten($body-color, 20%);
-$body-focus: lighten($body-color, 20%);
+$body-hover: lighten($body-color, 30%);
+$body-focus: lighten($body-color, 30%);
 
 $accent-color: #1ccdaa;
 $accent-link: #1ccdaa;
-$accent-hover: lighten($accent-color, 20%);
-$accent-focus: lighten($accent-color, 20%);
+$accent-hover: lighten($accent-color, 30%);
+$accent-focus: lighten($accent-color, 30%);
 $accent-color-secondary: darken($accent-color, 10%);
 
 $transparency-light: rgba(black, .02);
