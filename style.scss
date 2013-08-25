@@ -16,28 +16,20 @@ Tags: thematic, child-theme, responsive, mobile-first
 @import 'scss/base';
 
 /* ==========================================================================
-   normalize.css v2.1.0 - git.io/normalize
+   basic styles, includes normalize.css
    ========================================================================== */
-
-@import 'scss/normalize';
 
 *,
 *:before,
-*:after { 
-    @include box-sizing(border-box); 
+*:after {
+    @include box-sizing(border-box);
 }
-
-/* ==========================================================================
-   theme fonts
-   ========================================================================== */
-
-@import 'scss/fonts';
-
-/* ==========================================================================
-   basic styles
-   ========================================================================== */
-
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
 body {
+    margin: 0;
     background: $background;
     font-family: $body-font;
     font-size: 100%;
@@ -50,21 +42,6 @@ body {
     @include breakpoint(large) {
         font-size: 125%;
     }
-}
-input,
-textarea {
-    padding: $spacing/2;
-    border: none;
-    background: $background-secondary;
-    font-family: $body-font;
-    color: $body-color;
-    outline: none;
-    &:focus {
-        box-shadow: 0 0 2px 2px $accent-color;
-    }
-}
-textarea {
-    resize: vertical;
 }
 h1 {
     margin: 0 0 0.5417em;
@@ -110,22 +87,29 @@ h6 {
 }
 a {
     @include transition(color .3s ease-in-out, background-color .3s ease-in-out);
+    background: transparent;
     color: $accent-link;
     text-decoration: none;
     &:visited {
         color: $accent-link;
     }
-    &:hover {
-        color: $accent-hover;
-    }
     &:focus {
         color: $accent-focus;
+        outline: thin dotted;
+    }
+    &:active,
+    &:hover {
+        color: $accent-hover;
+        outline: 0;
     }
 }
+img {
+    border: 0;
+}
 p,
-pre,
 form,
 address,
+figure,
 embed,
 select,
 .video-container {
@@ -163,9 +147,14 @@ dt {
 dd {
     margin: 0 0 $spacing;
 }
-abbr,
+b,
+strong {
+    font-weight: bold;
+}
+abbr[title],
 acronym {
     cursor: help;
+    border-bottom: 1px dotted;
 }
 ins {
     border-bottom: 1px solid $accent-color;
@@ -174,10 +163,59 @@ ins {
 caption {
     text-align: center;
 }
+blockquote {
+    margin: 0 0 $spacing;
+    p {
+        padding-left: 1em;
+        border-left: 5px solid $accent-color;
+    }
+}
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+pre,
+code,
+kbd {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+pre {
+    margin: 0 0 $spacing;
+    white-space: pre-wrap;
+}
+code {
+    padding: 0 .2em;
+    background: $background-secondary;
+}
+small {
+    font-size: 80%;
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+hr {
+    height: 1px;
+    margin: 0 0 $spacing;
+    border: 0;
+    background: $accent-color;
+    color: $accent-color;
+}
 table {
     margin: 0 0 $spacing;
     border: 1px solid $accent-color;
     border-width: 1px 1px 0;
+    border-collapse: collapse;
+    border-spacing: 0;
     text-align: left;
 }
 tr {
@@ -188,16 +226,78 @@ td {
     padding: .7em 1.25em;
     vertical-align: top;
 }
-code {
-    padding: 0 .2em;
-    background: $background-secondary;
+fieldset {
+    border: 1px solid $accent-color;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
 }
-hr {
-    height: 1px;
-    margin: 0 0 $spacing;
+legend {
     border: 0;
-    background: $accent-color;
-    color: $accent-color;
+    padding: 0;
+}
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+button,
+input {
+    line-height: normal;
+}
+button,
+select {
+    text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+input,
+textarea {
+    padding: $spacing/2;
+    border: none;
+    background: $background-secondary;
+    font-family: $body-font;
+    color: $body-color;
+    outline: none;
+    &:focus {
+        box-shadow: 0 0 2px 2px $accent-color;
+    }
+}
+textarea {
+    resize: vertical;
+    overflow: auto;
+    vertical-align: top;
 }
 ::-moz-selection {
     background: $selection-background;
@@ -209,17 +309,17 @@ hr {
     color: $selection-color;
     text-shadow: none;
 }
-blockquote {
-    margin: 0 0 $spacing;
-    p {
-        padding-left: 1em;
-        border-left: 5px solid $accent-color;
-    }
-}
+
+/* ==========================================================================
+   theme fonts
+   ========================================================================== */
+
+@import 'scss/fonts';
+
 /* ==========================================================================
    layout structure
    ========================================================================== */
-   
+
 // options - 1c-advanced, 2c-r-sidebar, 2c-l-sidebar, layout (for starting your own)
 @import 'scss/layouts/2c-r-sidebar';
 
@@ -257,7 +357,7 @@ blockquote {
             background: $accent-hover;
         }
     }
-    .button { 
+    .button {
         float: right;
         margin-top: -$spacing/4;
     }
@@ -375,7 +475,7 @@ blockquote {
             }
         }
     }
-    img, 
+    img,
     select {
         max-width: 100%;
     }
@@ -399,6 +499,7 @@ blockquote {
     margin-bottom: $spacing;
 }
 #secondary {}
+#footer {}
 #subsidiary {}
 #first {}
 #second {}
@@ -414,58 +515,7 @@ blockquote {
 /* navigational elements and buttons
    ========================================================================== */
 
-.page-link,
-.comment-navigation {
-    margin: 0 0 $spacing;
-    clear: both;
-    font-weight: bold;
-    a {
-        padding: 0.4em 0.65em;
-        background: $background-secondary;
-    }
-    a,
-    span {
-        margin-right: 0.5em;
-    }
-}
-.paginated-comments-links {
-    margin-top: $spacing;
-}
-.button,
-button,
-input[type="submit"] {
-    position: relative;
-    display: inline-block;
-    padding: $spacing/2;
-    border: none;
-    background: $background-secondary;
-    color: $accent-color;
-    cursor: pointer;
-    text-align: center;
-}
-.button:hover,
-button:hover,
-input[type="submit"]:hover {
-    background: lighten($background-secondary, 5%);
-}
-#nav-below {
-    margin: 0 0 $spacing;
-    overflow: hidden;
-    clear: both;
-    .meta-nav {}
-
-    @include breakpoint(medium) {
-        .nav-previous {
-            float: left;
-        }
-        .nav-next {
-            float: right;
-            text-align: right;
-        }
-    }
-}
-.more-link {}
-.edit-link {}
+@import 'scss/navigation-and-buttons';
 
 /* comments
    ========================================================================== */
@@ -475,45 +525,7 @@ input[type="submit"]:hover {
 /* specific pages and templates
    ========================================================================== */
 
-// link and archive templates
-#links-page,
-#archives-page {
-    overflow: hidden;
-    padding: 0;
-    list-style: none;
-}
-.content-column {
-    margin: 0 0 $spacing; 
-
-    @include breakpoint(medium) {
-        float: left;
-        width: 50%;
-    }
-}
-
-// author info template
-#author-info {
-    overflow: hidden;
-    margin: 0 0 $spacing;
-    .avatar {
-        float: left;
-        margin: 0 $spacing/2 0;
-    }
-}
-
-// 404 error page
-.error404 {
-    input[type="submit"] {
-        float: none;
-    }
-}
-
-// search page, specifically no results
-.search-no-results {
-    input[type="submit"] {
-        float: none;
-    }    
-}
+@import 'scss/pages-and-templates';
 
 /* internet explorer (old IE, 6, 7 and 8 fixes)
    ========================================================================== */
