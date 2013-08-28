@@ -9,7 +9,7 @@ Version: 0.0.1
 Tags: thematic, child-theme, responsive, mobile-first
 */
 /* ==========================================================================
-   basic styles, includes normalize.css
+   basic styles
    ========================================================================== */
 *,
 *:before,
@@ -351,8 +351,8 @@ td {
    ========================================================================== */
 #wrapper {
   *zoom: 1;
-  max-width: 70em;
-  _width: 70em;
+  max-width: 92em;
+  _width: 92em;
   padding-left: 1em;
   padding-right: 1em;
   margin-left: auto;
@@ -374,30 +374,36 @@ td {
 }
 
 @media (min-width: 50em) {
+  .access-nav {
+    float: right;
+  }
+}
+
+@media (min-width: 50em) {
   #container {
-    width: 65.71429%;
+    width: 65.21739%;
     float: left;
-    margin-right: 2.85714%;
+    margin-right: 4.34783%;
     display: inline;
   }
 }
 
 @media (min-width: 50em) {
   #primary {
-    width: 31.42857%;
+    width: 30.43478%;
     float: right;
     margin-right: 0;
-    #margin-left: -2em;
+    #margin-left: -4em;
     display: inline;
   }
 }
 
 @media (min-width: 50em) {
   #secondary {
-    width: 31.42857%;
+    width: 30.43478%;
     float: right;
     margin-right: 0;
-    #margin-left: -2em;
+    #margin-left: -4em;
     display: inline;
     clear: right;
   }
@@ -405,28 +411,28 @@ td {
 
 @media (min-width: 50em) {
   #first {
-    width: 31.42857%;
+    width: 30.43478%;
     float: left;
-    margin-right: 2.85714%;
+    margin-right: 4.34783%;
     display: inline;
   }
 }
 
 @media (min-width: 50em) {
   #second {
-    width: 31.42857%;
+    width: 30.43478%;
     float: left;
-    margin-right: 2.85714%;
+    margin-right: 4.34783%;
     display: inline;
   }
 }
 
 @media (min-width: 50em) {
   #third {
-    width: 31.42857%;
+    width: 30.43478%;
     float: right;
     margin-right: 0;
-    #margin-left: -2em;
+    #margin-left: -4em;
     display: inline;
   }
 }
@@ -455,7 +461,7 @@ td {
     width: 100%;
     float: right;
     margin-right: 0;
-    #margin-left: -2em;
+    #margin-left: -4em;
     display: inline;
   }
 }
@@ -464,7 +470,7 @@ td {
   width: 100%;
   float: right;
   margin-right: 0;
-  #margin-left: -2em;
+  #margin-left: -4em;
   display: inline;
 }
 .single-attachment #primary,
@@ -538,11 +544,6 @@ td {
     display: block;
   }
 }
-@media (min-width: 50em) {
-  .access-nav {
-    float: right;
-  }
-}
 
 .sf-menu li {
   position: relative;
@@ -551,6 +552,9 @@ td {
 }
 .sf-menu li:last-child {
   border: none;
+}
+.sf-menu li li {
+  display: none;
 }
 .sf-menu a {
   -webkit-transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -906,8 +910,8 @@ textarea {
 }
 @media (min-width: 30em) {
   #comments-list .children {
-    padding-left: 8.57143%;
-    padding-right: 8.57143%;
+    padding-left: 8.69565%;
+    padding-right: 8.69565%;
     border-left: 5px solid #222f3d;
   }
 }
