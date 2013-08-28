@@ -16,7 +16,7 @@ Tags: thematic, child-theme, responsive, mobile-first
 @import 'scss/base';
 
 /* ==========================================================================
-   basic styles, includes normalize.css
+   basic styles
    ========================================================================== */
 
 *,
@@ -310,13 +310,11 @@ td {
         margin: 0;
         padding: 0;
     }
+
     @include breakpoint(medium) {
         .js & {
             display: block;
         }
-    }
-    @include breakpoint(large) {
-        float: right;
     }
 }
 .sf-menu {
@@ -326,6 +324,9 @@ td {
         border-bottom: 1px solid $background;
         &:last-child {
             border: none;
+        }
+        li {
+            display: none;
         }
     }
     a {
