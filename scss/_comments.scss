@@ -21,6 +21,7 @@
         }
     }
     .children {
+        
         @include breakpoint(medium) {
               @include pad(1,1);
               border-left: 5px solid $background-secondary;
