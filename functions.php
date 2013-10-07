@@ -35,30 +35,6 @@ add_filter('thematic_create_contenttype', 'childtheme_create_contenttype', 11);
 
 
 
-// remove the index and follow tags from header since it is browser default (SEO related, kinda)
-// reference - scottnix.com/polishing-thematics-head/
-function childtheme_create_robots($content) {
-    global $paged;
-    if (thematic_seo()) {
-        if((is_home() && ($paged < 2 )) || is_front_page() || is_single() || is_page() || is_attachment())
-        {
-            $content = "";
-        } elseif (is_search()) {
-            $content = "\t";
-            $content .= "<meta name=\"robots\" content=\"noindex,nofollow\" />";
-            $content .= "\n\n";
-        } else {
-            $content = "\t";
-            $content .= "<meta name=\"robots\" content=\"noindex,follow\" />";
-            $content .= "\n\n";
-        }
-    return $content;
-    }
-}
-add_filter('thematic_create_robots', 'childtheme_create_robots');
-
-
-
 // clear useless garbage for a polished head
 // remove really simple discovery
 remove_action('wp_head', 'rsd_link');
@@ -96,8 +72,8 @@ add_action('wp_enqueue_scripts','childtheme_remove_superfish', 9);
 
 
 // script manager template for registering and enqueuing files
+// wp_register_script template ( $handle, $src, $deps, $ver, $in_footer );
 function childtheme_script_manager() {
-    // wp_register_script template ( $handle, $src, $deps, $ver, $in_footer );
     // registers modernizr script, childtheme path, no dependency, no version, loads in header
     wp_register_script('modernizr-js', get_stylesheet_directory_uri() . '/js/modernizr.js', false, false, false);
     // registers fitvids script, local childtheme path, yes dependency is jquery, no version, loads in footer
@@ -120,17 +96,13 @@ add_action('wp_enqueue_scripts', 'childtheme_script_manager');
 function childtheme_deregister_styles() {
     // example of removing contact form 7 styling, so it can be added to the main CSS file
     // wp_deregister_style('contact-form-7');
-
 }
 add_action('wp_print_styles', 'childtheme_deregister_styles', 100);
 
 // deregister scripts
 function childtheme_deregister_scripts() {
-    // example of removing some bs gravatar script jetpack loads
-    // wp_deregister_script('devicepx');
-
     if ( ! is_page('contact') ) {
-        // remove contact form7 styles on all pages but contact page
+        // example of removing contact form7 script from loading on every page, except contact page where it is used
         // wp_dequeue_script('contact-form-7');
      }
 }
@@ -147,7 +119,7 @@ add_action('wp_head', 'childtheme_add_favicon');
 
 
 // remove user agent sniffing from thematic theme
-// this is what applies classes to the browser type and version body classes
+// this is what applies classes to the browser type and browser version body classes, bad practice to target CSS styling this way
 function childtheme_show_bc_browser() {
     return FALSE;
 }
