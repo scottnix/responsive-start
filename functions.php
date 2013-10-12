@@ -162,17 +162,6 @@ add_filter('thematic_post_thumb_size', 'childtheme_post_thumb_size');
 
 
 
-// super hacky way to remove width and height from images, better for slider... but I don't like this :P
-// reference - css-tricks.com/snippets/wordpress/remove-width-and-height-attributes-from-inserted-images/
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
-function remove_width_attribute( $html ) {
-   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-   return $html;
-}
-
-
-
 // remove the damn "Permalink to..." that appears on the titles, it's debatable this is bad for internal linking (SEO).
 function childtheme_postheader_posttitle($posttitle ) {
     $posttitle = "\n\n\t\t\t\t\t";
