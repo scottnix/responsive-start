@@ -7,21 +7,21 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
 
 // this is a more complex example, the content is full width with the sidebar appearing below the content.
 // what makes this more complex is the #wrapper, #header and #footer are able to span 100% width of the full browser.
-// this is ugly, but this serves as a rough example of how to keep the main outer divs full width.
+// this is ugly, but this serves as a quick example of how to keep the main outer divs full width.
 // this could also be even easier by just injecting some divs, like inner wrappers, which I would probably do if I needed this style layout.
 
-#header { 
+[id="header"] {
     background: $background-secondary;
 }
-#branding,
-#access,
-#main,
-#subsidiary {
-    @include container; // set susy grid container 
+[id="branding"],
+[id="access"],
+[id="main"],
+[id="susidiary"] {
+    @include container; // set susy grid container
     max-width: $max-width;
     margin: 0 auto !important;
 }
-#branding {    
+[id="branding"] {
     padding-left: $grid-padding !important;
     padding-right: $grid-padding !important;
 }
@@ -32,7 +32,7 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
 .entry-content {
 
     @include breakpoint(large) {
-        @include span-columns(8, 12);   
+        @include span-columns(8, 12);
     }
 }
 .entry-utility {
@@ -41,58 +41,66 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
         @include span-columns(4 omega, 12);
     }
 }
-#primary {
+[id="comments-list"] {
+    .children {
 
-    @include breakpoint(medium) {
-        @include span-columns(6, 12);   
+        @include breakpoint(medium) {
+              @include pad(1,1);
+        }
     }
 }
-#secondary {
+[id="primary"] {
 
     @include breakpoint(medium) {
-        @include span-columns(6 omega, 12);   
+        @include span-columns(6, 12);
     }
 }
-#footer {
+[id="secondary"] {
+
+    @include breakpoint(medium) {
+        @include span-columns(6 omega, 12);
+    }
+}
+[id="footer"] {
     background: $background-secondary;
 }
-#first {
+[id="first"] {
 
     @include breakpoint(medium) {
-        @include span-columns(6, 12);   
+        @include span-columns(6, 12);
     }
     @include breakpoint(large) {
-        @include span-columns(3, 12);   
-    }  
+        @include span-columns(3, 12);
+    }
 }
-#second {
+[id="second"] {
 
     @include breakpoint(medium) {
-        @include span-columns(6 omega, 12);   
+        @include span-columns(6 omega, 12);
     }
     @include breakpoint(large) {
-        @include span-columns(3, 12);   
-    }  
+        @include span-columns(3, 12);
+    }
 }
-#third {
+[id="third"] {
 
     @include breakpoint(medium) {
-        @include span-columns(6, 12);   
+        @include span-columns(6, 12);
     }
     @include breakpoint(large) {
-        @include span-columns(3, 12);   
-    }  
+        @include span-columns(3, 12);
+    }
 }
-#footer-widget {
+[id="footer-widget"] {
 
     @include breakpoint(medium) {
-        @include span-columns(6 omega, 12);   
+        @include span-columns(6 omega, 12);
     }
     @include breakpoint(large) {
-        @include span-columns(3 omega, 12);   
-    }  
+        @include span-columns(3 omega, 12);
+    }
 }
-#siteinfo {
+[id="siteinfo"] {
     max-width: $max-width;
     margin: 0 auto;
     padding-left: $grid-padding !important;
@@ -100,20 +108,17 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
     clear: both;
 }
 
+// grouping common layout specific properties
 
-// grouping common layout properties
-#header,
-#main,
+[id="header"],
+[id="main"],
 #footer {
     margin-bottom: $spacing*2;
 }
-#siteinfo {
-     
-}
 
 // grouping layout specific clearfixing
-#header, 
-#main,
+[id="header"],
+[id="main"],
 .hentry {
     @extend %clearfix;
 }
@@ -122,17 +127,9 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
 // page templates
 // ==========================================================================
 
-// page templates overrides
+// single page templates overrides
 .page {
     .entry-content {
-
-        @include breakpoint(large) {
-            @include span-columns(12 omega, 12);
-        }  
-    }
-}
-.page-template-template-page-fullwidth-php {
-    #container {
 
         @include breakpoint(large) {
             @include span-columns(12 omega, 12);
@@ -140,14 +137,24 @@ $show-grid-backgrounds: true; // show highlighted grid columns? true/false
     }
 }
 
-// attachments overrides
+// fullwidth template overrides
+.page-template-template-page-fullwidth-php {
+    [id="container"] {
+
+        @include breakpoint(large) {
+            @include span-columns(12 omega, 12);
+        }
+    }
+}
+
+// attachments template overrides
 .single-attachment {
-    #container {
+    [id="container"] {
         @include span-columns(12 omega, 12);
     }
-    #primary,
-    #secondary,
-    #respond {
+    [id="primary"],
+    [id="secondary"],
+    [id="respond"] {
         display: none;
     }
 }
