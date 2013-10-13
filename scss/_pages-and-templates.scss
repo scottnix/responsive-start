@@ -1,6 +1,6 @@
 // link and archive templates
-#links-page,
-#archives-page {
+[id="links-page"],
+[id="archives-page"] {
     overflow: hidden;
     padding: 0;
     list-style: none;
@@ -15,7 +15,7 @@
 }
 
 // author info template
-#author-info {
+[id="author-info"] {
     overflow: hidden;
     margin: 0 0 $spacing;
     .avatar {
