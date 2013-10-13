@@ -1,4 +1,4 @@
-#comments {
+[id="comments"] {
     clear:both;
     ol,
     ul {
@@ -7,7 +7,7 @@
         list-style: none;
     }
 }
-#comments-list {
+[id="comments-list"] {
     ol {
         margin: 0 0 $spacing;
         border-bottom: none;
@@ -21,9 +21,8 @@
         }
     }
     .children {
-        
+
         @include breakpoint(medium) {
-              @include pad(1,1);
               border-left: 5px solid $background-secondary;
         }
     }
@@ -67,7 +66,7 @@
         font-size: 80%;
     }
 }
-#respond {
+[id="respond"] {
     @extend %clearfix;
 }
 .pings {
@@ -80,10 +79,10 @@
         @extend %visuallyhidden;
     }
 }
-#reply-title {
+[id="reply-title"] {
     position: relative;
 }
-#cancel-comment-reply-link {
+[id="cancel-comment-reply-link"] {
     font-weight: normal;
     display:block;
 }
@@ -96,7 +95,7 @@
         width: 100%;
     }
 }
-#form-allowed-tags {
+[id="form-allowed-tags"] {
     display:none;
 }
 .form-submit {
