@@ -459,7 +459,7 @@ td {
   margin-bottom: 3.25em;
 }
 
-[id="footer-aside"] {
+[id="footer-widget"] {
   clear: both;
 }
 
@@ -615,9 +615,6 @@ td {
 .aside section {
   list-style: none;
   padding: 0;
-}
-.aside ul ul,
-.aside section ul {
   margin: 0 0 1.625em;
 }
 .aside ul ul li,
@@ -626,7 +623,7 @@ td {
 }
 .aside ul ul ul,
 .aside section ul ul {
-  margin-bottom: 0;
+  margin: 0 0 0 0.8125em;
 }
 .aside img,
 .aside select {
