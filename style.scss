@@ -391,13 +391,13 @@ td {
     section {
         list-style: none;
         padding: 0;
+        margin: 0 0 $spacing;
         ul {
-            margin: 0 0 $spacing;
             li {
                 padding: .1em 0;
             }
             ul {
-                margin-bottom: 0;
+                margin: 0 0 0 $spacing/2;
             }
         }
     }
