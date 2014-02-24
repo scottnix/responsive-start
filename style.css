@@ -850,16 +850,16 @@ textarea {
   vertical-align: top;
 }
 
-[id="nav=below"] {
+[id="nav-below"] {
   margin: 0 0 1.625em;
   overflow: hidden;
   clear: both;
 }
 @media (min-width: 30em) {
-  [id="nav=below"] .nav-previous {
+  [id="nav-below"] .nav-previous {
     float: left;
   }
-  [id="nav=below"] .nav-next {
+  [id="nav-below"] .nav-next {
     float: right;
     text-align: right;
   }
